@@ -3,10 +3,18 @@ import React from 'react'
 import '../App.css'
 
 export default function Numpad(props){
-
+    const numpad=['ac','+-',"%","/","7","8","9","*","4","5","6","-","1","2","3","+","0",".","="]
+    const signs=['ac','+-',"%","/","*","-","+",".","="]
+    
     return(
         <div className="numpad">
-          <div name="" onClick={()=>props.register("ac")} className="key sign"> AC </div>
+            {numpad.map((n)=>{
+                let signNum= signs.includes(n) ? "sign" : n=="0"? "number zero" : "number"
+                return(
+                    <div key={n} name="" onClick={()=>props.register(n)} className={"key "+signNum}>{n} </div>
+                )
+            })}
+          {/* <div name="" onClick={()=>props.register("ac")} className="key sign"> AC </div>
           <div name="" onClick={()=>props.register("+-")} className="key sign"> +/- </div>
           <div name="" onClick={()=>props.register("%")} className="key sign"> % </div>
           <div name="" onClick={()=>props.register("/")} className="key sign"> / </div>                   
@@ -24,7 +32,7 @@ export default function Numpad(props){
           <div name="" onClick={()=>props.register("+")} className="key sign"> + </div>
           <div name="" onClick={()=>props.register("0")} className="key zero number"> 0 </div>
           <div name="" onClick={()=>props.register(".")} className="key number"> . </div>
-          <div name="" onClick={()=>props.register("=")} className="key sign"> = </div>
+          <div name="" onClick={()=>props.register("=")} className="key sign"> = </div> */}
       </div>
     )
 }
